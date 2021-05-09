@@ -1,0 +1,122 @@
+<!--
+	The main interface of Horsey Documents.
+    Copyright (C) 2021 Horsey Company
+
+	The source code for this program is licensed under the GNU GPL. See
+	the file "gnu-gpl-3.0.txt" in the root directory. See also this:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title id="apptitle">Horsey Documents</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    </head>
+    <body style="background: white;">
+        <style>
+            body,
+            button {
+                font-family: system-ui !important;
+            }
+            :root {
+                --accent-color: pink;
+            }
+            .tabcontent button {
+				-webkit-appearance: none;
+                display: inline-block;
+                height: 100% !important;
+                min-height: 100%;
+                background-color: white;
+				color:black;
+                border: 1px solid black;
+				transition:0.3s;
+            }
+			.tabcontent button:hover {
+				background-color:var(--accent-color);
+				color:white;
+			}
+            /* Style the tab */
+            .tab {
+                overflow-x: scroll;
+				overflow-y: visible;
+                height: 10%;
+                border: 1px solid #ccc;
+                background-color: rgb(240, 240, 240);
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                font-size: 17px;
+                transition: 0.3s;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: var(--accent-color);
+                color: white;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+                display: none;
+                height: 10% !important;
+                overflow-y: scroll;
+                border: 1px solid #ccc;
+                border-top: none;
+            }
+        </style>
+		<link rel="stylesheet" href="css/style.css" />
+        <body>
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'File')">File</button>
+                <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+                <button class="tablinks" onclick="openTab(event, 'View')">View</button>
+            </div>
+
+            <div id="File" class="tabcontent">
+				<button onclick="window.open(location.href,'_blank','frame=false');">New Document</button>
+                <button>Save</button>
+				<button onclick="opendoc()">Open Saved Document...</button>
+				<button onclick="window.close();">Exit</button>
+            </div>
+
+            <div id="Home" class="tabcontent">
+                <h3>Paris</h3>
+                <p>Paris is the capital of France.</p>
+            </div>
+
+            <div id="View" class="tabcontent">
+                <h3>Tokyo</h3>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+			<div style="width:100%; height:75%;">
+			<iframe src="write.html" id="writehere" style="height:100%; width:100%;"></iframe></div>
+            <script src="js/script.js"></script>
+        </body>
+    </body>
+</html>
